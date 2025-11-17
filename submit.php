@@ -47,7 +47,7 @@ try {
 
     if($count >= $capacity) {
         $pdo->rollBack();
-        fail('Selected mechanic is fully booked for this date.');
+        fail("This mechanic is fully booked. Please choose another mechanic or date.");
     }
 
     // ensure this car isn't already booked on the same date

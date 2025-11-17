@@ -1,4 +1,3 @@
-// assets/app.js - availability check + basic validation
 document.addEventListener('DOMContentLoaded', function(){
   const mechSelect = document.getElementById('mechanic_id');
   const dateInput = document.getElementById('appointment_date');
@@ -23,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
         } else {
           availability.innerHTML = '<div>Slots left: <strong>' + data.slots_left + '</strong> / ' + data.capacity + '</div>';
           if(!data.can_book) {
-            availability.innerHTML += '<div class="err">Mechanic fully booked on selected date.</div>';
+            availability.innerHTML += '<div class="error-box">This mechanic is fully booked on ${date}. Please choose another mechanic.</div>';
           }
         }
       })
