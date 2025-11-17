@@ -1,0 +1,38 @@
+/* style.css — clean, modern-ish but simple */
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --accent: #1565c0;
+  --muted: #666;
+}
+
+* { box-sizing: border-box; font-family: "Segoe UI", Roboto, Arial, sans-serif; }
+body { margin:0; background:var(--bg); color:#222; }
+.wrap { max-width:980px; margin:0 auto; padding:18px; }
+
+.site-header { background:linear-gradient(90deg,#0b67b2,#1565c0); color:#fff; padding:12px 0; }
+.site-header .wrap { display:flex; align-items:center; justify-content:space-between; }
+.site-header h1 { margin:0; font-size:20px; }
+.site-header nav a { color:rgba(255,255,255,0.95); text-decoration:none; margin-left:14px; font-size:14px; }
+
+.card { background:var(--card); border-radius:8px; padding:16px; box-shadow: 0 6px 18px rgba(20,30,60,0.06); margin-bottom:16px; }
+.small { width:280px; display:inline-block; vertical-align:top; margin-left:20px; }
+
+main.wrap { display:flex; gap:20px; align-items:flex-start; padding:22px; }
+main .card { flex:1; }
+
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+label { display:block; font-size:13px; color:var(--muted); }
+input[type=text], input[type=date], textarea, select { width:100%; padding:8px 10px; margin-top:6px; border:1px solid #e0e6ef; border-radius:6px; background:#fff; font-size:14px; }
+textarea { resize:vertical; }
+
+label.full { grid-column: 1 / -1; }
+
+.availability { margin-top:10px; font-size:14px; color:#222; }
+.availability .err { color:#b00020; }
+
+.actions { margin-top:14px; }
+.btn { display:inline-block; padding:10px 14px; background:var(--accent); color:#fff; border-radius:6px; text-decoration:none; border:none; cursor:pointer; }
+.btn.secondary { background:#e9eef7; color: #0b67b2; }
+
+.footer { padding:12px 18px; text-align:center; color:var(--muted); font-size:13px; background:transparent; margin-top:10px; }
