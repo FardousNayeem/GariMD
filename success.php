@@ -18,7 +18,7 @@ unset($_SESSION['last_appointment']);
 
 <?php include __DIR__ . '/components/navbar.php'; ?>
 
-<main class="wrap">
+<main class="wrap center-page">
     <section class="card success-container">
 
         <div class="checkmark">
