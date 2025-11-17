@@ -1,9 +1,9 @@
 <?php
-// db/db.php - PDO connection
+
 $host = '127.0.0.1';
 $db   = 'mechaDB';
 $user = 'root';
-$pass = ''; // XAMPP default - change if needed
+$pass = ''; 
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

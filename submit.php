@@ -2,7 +2,6 @@
 require __DIR__ . '/db/db.php';
 
 function fail($msg) {
-    // simple fail; in production you might store into session and redirect back
     echo "<p style='color:red;'>Error: " . htmlspecialchars($msg) . "</p>";
     echo "<p><a href='index.php'>Go back</a></p>";
     exit;
@@ -27,10 +26,8 @@ if(!preg_match('/^\d{6,15}$/', $phone)) fail('Phone must be digits (6-15).');
 if(!preg_match('/^[0-9A-Za-z\-]+$/', $car_engine)) fail('Invalid engine number.');
 
 try {
-    // Begin transaction to avoid race conditions
     $pdo->beginTransaction();
 
-    // Lock the mechanic row
     $stmt = $pdo->prepare("SELECT capacity FROM mechanics WHERE id = ? FOR UPDATE");
     $stmt->execute([$mechanic_id]);
     $row = $stmt->fetch();
@@ -40,7 +37,6 @@ try {
     }
     $capacity = (int)$row['capacity'];
 
-    // count appointments for that mechanic on the date
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM appointments WHERE mechanic_id = ? AND appointment_date = ?");
     $stmt->execute([$mechanic_id, $date]);
     $count = (int)$stmt->fetchColumn();
@@ -50,7 +46,6 @@ try {
         fail("This mechanic is fully booked. Please choose another mechanic or date.");
     }
 
-    // ensure this car isn't already booked on the same date
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM appointments WHERE car_engine = ? AND appointment_date = ?");
     $stmt->execute([$car_engine, $date]);
     if((int)$stmt->fetchColumn() > 0) {
@@ -58,7 +53,6 @@ try {
         fail('This car already has an appointment on that date.');
     }
 
-    // insert appointment
     $stmt = $pdo->prepare("INSERT INTO appointments
       (client_name, address, phone, car_license, car_engine, appointment_date, mechanic_id)
       VALUES (?,?,?,?,?,?,?)");

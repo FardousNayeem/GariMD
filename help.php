@@ -41,6 +41,7 @@ require __DIR__ . '/db/db.php';
 
     </section>
   </main>
-  <footer class="wrap footer">© MechaApp — Help</footer>
+  <footer class="wrap footer">©2025 GariMD. Created by Fardous Nayeem</footer>
+
 </body>
 </html>

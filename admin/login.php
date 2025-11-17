@@ -47,6 +47,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
     </form>
   </section>
 </main>
+<footer class="wrap footer">©2025 GariMD. Created by Fardous Nayeem</footer>
 
 </body>
 </html>

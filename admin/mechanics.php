@@ -39,6 +39,7 @@ $mechs = $pdo->query("SELECT * FROM mechanics ORDER BY name")->fetchAll();
   </table>
 </section>
 </main>
+<footer class="wrap footer">©2025 GariMD. Created by Fardous Nayeem</footer>
 
 </body>
 </html>

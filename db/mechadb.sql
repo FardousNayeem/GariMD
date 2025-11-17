@@ -20,13 +20,7 @@ CREATE TABLE IF NOT EXISTS appointments (
   FOREIGN KEY (mechanic_id) REFERENCES mechanics(id) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
--- Prevent same car (engine) booking twice on same date
 CREATE UNIQUE INDEX IF NOT EXISTS ux_car_date ON appointments(car_engine, appointment_date);
 
--- Sample mechanics
 INSERT INTO mechanics (name, capacity) VALUES
-('Ali Hossain', 4),
-('Karim Uddin', 4),
-('Rahim Ahmed', 4),
-('Sabbir Khan', 4),
-('Imran Biswas', 4);
+('Shareeful Islam', 4);

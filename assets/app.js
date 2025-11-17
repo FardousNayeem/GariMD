@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function(){
   mechSelect.addEventListener('change', checkAvailability);
   dateInput.addEventListener('change', checkAvailability);
 
-  // Basic validation
   form.addEventListener('submit', function(e){
     const phone = form.phone.value.trim();
     const engine = form.car_engine.value.trim();

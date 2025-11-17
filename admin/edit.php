@@ -37,4 +37,7 @@ $mechanics = $mechStmt->fetchAll();
       </form>
     </section>
   </main>
-</body></html>
+  <footer class="wrap footer">©2025 GariMD. Created by Fardous Nayeem</footer>
+
+</body>
+</html>

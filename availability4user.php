@@ -11,10 +11,8 @@ if(!$mechanic_id || !$date) {
 }
 
 try {
-    // Fixed capacity per assignment
     $capacity = 4;
 
-    // Count appointments
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM appointments WHERE mechanic_id = ? AND appointment_date = ?");
     $stmt->execute([$mechanic_id, $date]);
     $count = (int)$stmt->fetchColumn();

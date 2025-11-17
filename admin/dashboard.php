@@ -72,6 +72,7 @@ $appointments = $appStmt->fetchAll();
       </table>
     </section>
 </main>
+<footer class="wrap footer">©2025 GariMD. Created by Fardous Nayeem</footer>
 
 </body>
 </html>
