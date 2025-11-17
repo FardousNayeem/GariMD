@@ -39,20 +39,32 @@ body {
 }
 
 nav a {
-    margin-left: 18px;
+    margin-left: 24px;                   
+    font-size: 17px;
+    font-weight: 500;                     
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
-    color: rgba(255,255,255,0.95);
-    font-size: 15px;
+    padding: 6px 4px;                   
+    transition: 0.2s ease;
+    letter-spacing: 0.3px;                
 }
+
 
 nav a.active {
+    font-weight: 600;
     text-decoration: underline;
-    font-weight: bold;
+    border-bottom: 2px solid white;
+    padding-bottom: 4px;
+    text-decoration: none;
 }
 
+
 nav a:hover {
-    opacity: 0.8;
+    color: white;
+    opacity: 1;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.35);
 }
+
 
 /* LAYOUT */
 .wrap {
@@ -108,7 +120,7 @@ label {
     color: var(--muted);
 }
 
-input, select, textarea {
+input, select {
     width: 100%;
     padding: 10px;
     margin-top: 6px;
@@ -116,6 +128,21 @@ input, select, textarea {
     border: 1px solid #cfd6e4;
     font-size: 14px;
 }
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #cfd6e4;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+
+    height: 80px;     
+    resize: none;     
+    overflow-y: auto;
+}
+
 
 input:focus, textarea:focus, select:focus {
     border-color: var(--primary);
