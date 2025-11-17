@@ -14,15 +14,19 @@ document.addEventListener('DOMContentLoaded', function(){
     fd.append('mechanic_id', mech);
     fd.append('date', date);
 
-    fetch('db/availibility.php', { method: 'POST', body: fd })
+    fetch('availability4user.php', { method: 'POST', body: fd })
       .then(r => r.json())
       .then(data => {
         if(data.error) {
-          availability.innerHTML = '<div class="err">' + data.error + '</div>';
+          availability.innerHTML = `<div class="err">${data.error}</div>`;
         } else {
-          availability.innerHTML = '<div>Slots left: <strong>' + data.slots_left + '</strong> / ' + data.capacity + '</div>';
+          availability.innerHTML = `<div>Slots left: <strong>${data.slots_left}</strong> / ${data.capacity}</div>`;
+
           if(!data.can_book) {
-            availability.innerHTML += '<div class="error-box">This mechanic is fully booked on ${date}. Please choose another mechanic.</div>';
+            availability.innerHTML += `
+              <div class="error-box">
+                This mechanic is fully booked on ${date}. Please choose another mechanic.
+              </div>`;
           }
         }
       })
@@ -34,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
   mechSelect.addEventListener('change', checkAvailability);
   dateInput.addEventListener('change', checkAvailability);
 
+  // Basic validation
   form.addEventListener('submit', function(e){
     const phone = form.phone.value.trim();
     const engine = form.car_engine.value.trim();
