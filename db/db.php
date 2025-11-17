@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Dhaka');
 
 $host = '127.0.0.1';
 $db   = 'mechaDB';

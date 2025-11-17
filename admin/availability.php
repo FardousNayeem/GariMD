@@ -48,7 +48,6 @@ document.getElementById('calendar_date').addEventListener('change', function(){
       });
 });
 </script>
-<footer class="wrap footer">©2025 GariMD. Created by Fardous Nayeem</footer>
 
 </body>
 </html>

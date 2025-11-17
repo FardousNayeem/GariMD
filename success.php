@@ -21,12 +21,6 @@ unset($_SESSION['last_appointment']);
 <main class="wrap center-page">
     <section class="card success-container">
 
-        <div class="checkmark">
-            <svg viewBox="0 0 52 52">
-                <path d="M14 27l7 7 17-17"></path>
-            </svg>
-        </div>
-
         <h2>Appointment Confirmed!</h2>
         <p>Your appointment has been booked successfully.</p>
 
@@ -45,8 +39,6 @@ unset($_SESSION['last_appointment']);
         <p class="redirect-note">You will be redirected back to the homepage in 6 seconds…</p>
     </section>
 </main>
-
-<footer class="wrap footer">©2025 GariMD. Created by Fardous Nayeem</footer>
 
 </body>
 </html>
