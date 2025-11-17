@@ -10,11 +10,12 @@ $root_prefix = $is_admin ? '..' : '.';
 
         <nav>
             <a href="<?= $root_prefix ?>/index.php" class="<?= $current=='index.php'?'active':'' ?>">Home</a>
-            <a href="availability.php" class="<?= $current=='availability.php'?'active':'' ?>">Mechanic Availability</a>
+            <a href="<?= $root_prefix ?>/mechanic_availability.php" class="<?= $current=='mechanic_availability.php'?'active':'' ?>">Mechanic Availability</a>
             <a href="<?= $root_prefix ?>/help.php" class="<?= $current=='help.php'?'active':'' ?>">Help</a>
 
             <?php if ($is_admin): ?>
                 <a href="dashboard.php" class="<?= $current=='dashboard.php'?'active':'' ?>">Dashboard</a>
+                <a href="mechanics.php" class="<?= $current=='mechanics.php'?'active':'' ?>">Mechanics</a>
                 <a href="availability.php" class="<?= $current=='availability.php'?'active':'' ?>">Mechanic Availability</a>
                 <a href="logout.php">Logout</a>
             <?php else: ?>

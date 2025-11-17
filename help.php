@@ -23,9 +23,9 @@ require __DIR__ . '/db/db.php';
 
       <h3>Rules</h3>
       <ul>
-        <li>Each mechanic has a default of <strong>4 slots/day</strong>. Admin can change this.</li>
+        <li>Each mechanic can take <strong>4 appointments per day</strong>.</li>
         <li>A particular <strong>car (engine number)</strong> cannot be booked more than once on the same date (prevent duplicate bookings for same car).</li>
-        <li>If you own multiple cars, you may book each car separately.</li>
+        <li>If you wish to take appointmentments for multiple cars, kindly book each car separately.</li>
       </ul>
 
       <h3>Common issues</h3>
@@ -33,10 +33,8 @@ require __DIR__ . '/db/db.php';
       <p><strong>Car already booked on same date:</strong> You cannot book that same car again that day.</p>
 
       <h3>Contact</h3>
-      <p>If you face issues while testing, contact your lab instructor or the person in-charge with screenshots of your form and any server error messages.</p>
+      <p>If you face issuess, please contact the admin at fardous.nayeem@g.bracu.ac.bd</p>
 
-      <h3>Admin help</h3>
-      <p>To manage appointments, go to <code>/admin</code> and login with admin credentials (provided by instructor or configured in the app). From the dashboard you can view, edit appointments and change mechanic capacities.</p>
     </section>
   </main>
   <footer class="wrap footer">© MechaApp — Help</footer>
