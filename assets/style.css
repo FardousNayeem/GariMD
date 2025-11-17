@@ -221,3 +221,66 @@ label.full {
     color: #084a93;
     text-decoration: none;
 }
+
+
+.success-container {
+    max-width: 600px;
+    margin: 60px auto;
+    text-align: center;
+    padding: 30px;
+}
+
+.checkmark {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    animation: pop 0.4s ease-out forwards;
+}
+
+.checkmark svg {
+    width: 50px;
+    height: 50px;
+    stroke: white;
+    stroke-width: 3px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: draw 0.6s ease forwards 0.3s;
+}
+
+@keyframes pop {
+    0% { transform: scale(0.4); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes draw {
+    to { stroke-dashoffset: 0; }
+}
+
+.summary-box {
+    text-align: left;
+    margin: 20px auto;
+    background: #f7f9fc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.summary-box p {
+    margin: 6px 0;
+    font-size: 15px;
+}
+
+.redirect-note {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
