@@ -3,19 +3,29 @@ document.addEventListener('DOMContentLoaded', function(){
   const dateInput   = document.getElementById('appointment_date');
   const availability= document.getElementById('availability');
   const form        = document.getElementById('bookingForm');
-  const submitBtn   = document.getElementById('submitBtn');
+  const submitBtn   = document.getElementById('submitBtn') || document.querySelector('#bookingForm .btn');
 
-  
   const today = new Date();
   const tzIso = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().slice(0,10);
-  dateInput.setAttribute('min', tzIso);
+  if (dateInput) dateInput.setAttribute('min', tzIso);
 
   let timer;
-  function debounce(fn, ms=250){ clearTimeout(timer); timer = setTimeout(fn, ms); }
+  const debounce = (fn, ms=250) => { clearTimeout(timer); timer = setTimeout(fn, ms); };
+
+  function clearAvailability(){
+    availability?.classList.add('hidden');
+    if (availability) availability.innerHTML = '';
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('btn-disabled');
+    }
+  }
 
   function renderAvailabilityCard(data, date){
+    if (!availability) return;
     const percent = data.capacity ? Math.round((data.booked / data.capacity) * 100) : 0;
     const full = !data.can_book;
+
     availability.classList.remove('hidden');
     availability.innerHTML = `
       <div class="availability-head">
@@ -23,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function(){
           <div class="label">Availability for</div>
           <div class="value">${data.mechanic || 'Selected mechanic'} — ${date}</div>
         </div>
-        <span class="badge ${full?'badge-danger':'badge-ok'}">${full ? 'Full' : 'Open'}</span>
+        <span class="badge ${full ? 'badge-danger' : 'badge-ok'}">${full ? 'Full' : 'Open'}</span>
       </div>
 
       <div class="progress">
@@ -37,22 +47,17 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
     `;
 
-    
     const isPast = date < tzIso;
-    submitBtn.disabled = full || isPast;
-    submitBtn.classList.toggle('btn-disabled', submitBtn.disabled);
-  }
-
-  function clearAvailability(){
-    availability.classList.add('hidden');
-    availability.innerHTML = '';
-    submitBtn.disabled = false;
-    submitBtn.classList.remove('btn-disabled');
+    if (submitBtn) {
+      submitBtn.disabled = full || isPast;
+      submitBtn.classList.toggle('btn-disabled', submitBtn.disabled);
+    }
   }
 
   function checkAvailability() {
-    const mech = mechSelect.value;
-    const date = dateInput.value;
+    const mech = mechSelect?.value;
+    const date = dateInput?.value;
+    if (!availability) return;
 
     if(!mech || !date){ clearAvailability(); return; }
 
@@ -68,26 +73,25 @@ document.addEventListener('DOMContentLoaded', function(){
         } else {
           availability.classList.remove('hidden');
           availability.innerHTML = `<div class="error-box">Could not check availability.</div>`;
-          submitBtn.disabled = true;
+          if (submitBtn) submitBtn.disabled = true;
         }
       })
       .catch(() => {
         availability.classList.remove('hidden');
         availability.innerHTML = `<div class="error-box">Network error while checking availability.</div>`;
-        submitBtn.disabled = true;
+        if (submitBtn) submitBtn.disabled = true;
       });
   }
 
-  mechSelect.addEventListener('change', ()=>debounce(checkAvailability));
-  dateInput.addEventListener('change', ()=>debounce(checkAvailability));
+  mechSelect?.addEventListener('change', () => debounce(checkAvailability));
+  dateInput?.addEventListener('change', () => debounce(checkAvailability));
 
-  form.addEventListener('submit', function(e){
+  form?.addEventListener('submit', function(e){
     const phone  = form.phone.value.trim();
     const engine = form.car_engine.value.trim();
 
     if(!/^\d{6,15}$/.test(phone)) { e.preventDefault(); alert('Enter a valid phone (6-15 digits).'); return; }
     if(!/^[0-9A-Za-z\-]+$/.test(engine)) { e.preventDefault(); alert('Enter a valid car engine number (alphanumeric).'); return; }
-
     if(dateInput.value < tzIso) { e.preventDefault(); alert('Date cannot be in the past.'); return; }
   });
 });

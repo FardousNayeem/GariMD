@@ -54,8 +54,7 @@
       </div>
 
 
-      <div id="availability" class="availability-card hidden">
-      </div>
+      <div id="availability" class="availability-card hidden"></div>
 
       <button id="submitBtn" class="btn" type="submit">Book Appointment</button>
     </form>
