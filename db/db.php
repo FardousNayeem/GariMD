@@ -4,7 +4,7 @@ date_default_timezone_set('Asia/Dhaka');
 $host = '127.0.0.1';
 $db   = 'mechaDB';
 $user = 'root';
-$pass = ''; 
+$pass = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -20,6 +20,4 @@ try {
     echo "DB connection failed: " . htmlspecialchars($e->getMessage());
     exit;
 }
-
 ?>
-

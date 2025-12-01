@@ -13,6 +13,9 @@ if(!$app) header('Location: dashboard.php');
 
 $mechStmt = $pdo->query("SELECT id, name FROM mechanics ORDER BY name");
 $mechanics = $mechStmt->fetchAll();
+
+$err = $_SESSION['err'] ?? '';
+unset($_SESSION['err']);
 ?>
 <!doctype html><html><head><meta charset="utf-8"><title>Edit</title>
 <link rel="stylesheet" href="../assets/style.css"></head>
@@ -21,6 +24,11 @@ $mechanics = $mechStmt->fetchAll();
   <main class="wrap">
     <section class="card small">
       <h2>#<?= $id ?></h2>
+
+      <?php if ($err): ?>
+        <div class="error-box"><?= htmlspecialchars($err) ?></div>
+      <?php endif; ?>
+
       <form method="post" action="update.php">
         <input type="hidden" name="action" value="update_appointment">
         <input type="hidden" name="id" value="<?=$id?>">
@@ -38,6 +46,5 @@ $mechanics = $mechStmt->fetchAll();
     </section>
   </main>
   <footer class="wrap footer">©2025 GariMD. Created by Fardous Nayeem</footer>
-
 </body>
 </html>
